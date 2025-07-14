@@ -1,0 +1,55 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.containerPrincipal {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.containerEsquerda, .containerDireita {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.containerEsquerda {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  text-align: left;
+}
+
+.containerDireita {
+  background-color: lightcoral;
+  text-align: right;
+}
+
+.fotoPessoal {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.chamada{
+    text-align: left;
+}
+
+h1{
+    margin-top: -10px;
+}
+
+.sou{
+    background-color: blue;
+}
+
+.kaian{
+    font-size: 70px;
+}
