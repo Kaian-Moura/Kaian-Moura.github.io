@@ -1,22 +1,982 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaian Santos Moura</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Kaian Santos Moura | Desenvolvedor & Estudante de Engenharia da Computação</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .animate-gradient {
+            background: linear-gradient(-45deg, #3b82f6, #8b5cf6, #ec4899, #06b6d4);
+            background-size: 400% 400%;
+            animation: gradient 3s ease infinite;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .animate-slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+        
+        .animate-slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+        
+        .animate-scale-in {
+            animation: scaleIn 0.6s ease-out;
+        }
+        
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .hover-glow:hover {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
+            padding: 2px;
+            border-radius: 12px;
+        }
+        
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: white;
+            border-radius: 10px;
+            z-index: -1;
+        }
+        
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .nav-link:hover::before {
+            left: 100%;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 50%;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .modern-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .modern-card:hover {
+            background: rgba(255, 255, 255, 0.95);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-modern {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-modern:hover::before {
+            left: 100%;
+        }
+        
+        .parallax {
+            transform: translateZ(0);
+            transition: transform 0.1s ease-out;
+        }
+        
+        @media (max-width: 768px) {
+            .animate-gradient {
+                font-size: 2.5rem;
+            }
+            
+            .hover-lift:hover {
+                transform: translateY(-4px);
+            }
+        }
+        
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .loading-skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float i {
+            margin-top: 16px;
+        }
+
+        @media screen and (max-width: 767px) {
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 22px;
+            }
+            .whatsapp-float i {
+                margin-top: 13px;
+            }
+        }
+    </style>
 </head>
-<body>
-    <div class="containerPrincipal">
-        <div class="containerEsquerda">
-            <div class="chamada">
-                <h1 class="sou">Olá, Sou </h1>
-                <h1 class="kaian">Kaian Moura</h1>
-            </div>      
+<body class="bg-gray-50 text-gray-800">
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-xl font-bold gradient-text">kaian.me</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-500">Início</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-500">Sobre</a>
+                    <a href="#services" class="nav-link text-gray-700 hover:text-blue-500">Serviços</a>
+                    <a href="#projects" class="nav-link text-gray-700 hover:text-blue-500">Projetos</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-500">Contato</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="ContainerDireita">
-            <img class="fotoPessoal" src="eu.jpg" alt="Uma foto minha">
+        <div id="mobile-menu" class="hidden md:hidden bg-white pb-3 px-4">
+            <a href="#home" class="block py-2 text-gray-700 hover:text-blue-500">Início</a>
+            <a href="#about" class="block py-2 text-gray-700 hover:text-blue-500">Sobre</a>
+            <a href="#services" class="block py-2 text-gray-700 hover:text-blue-500">Serviços</a>
+            <a href="#projects" class="block py-2 text-gray-700 hover:text-blue-500">Projetos</a>
+            <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-500">Contato</a>
         </div>
-    </div>
+    </nav>
+
+    <section id="home" class="min-h-screen flex items-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50"></div>
+        <div class="absolute inset-0 bg-gradient-to-tr from-blue-100/20 via-transparent to-purple-100/20 animate-pulse"></div>
+        
+        <div class="absolute top-20 left-10 w-20 h-20 bg-blue-200/30 rounded-full blur-xl animate-bounce"></div>
+        <div class="absolute top-40 right-20 w-32 h-32 bg-purple-200/30 rounded-full blur-xl animate-bounce" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-20 left-20 w-16 h-16 bg-pink-200/30 rounded-full blur-xl animate-bounce" style="animation-delay: 2s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 text-center lg:text-left">
+                    <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+                        Eu sou <br>
+                        <span class="gradient-text animate-gradient">Kaian Moura</span>
+                    </h1>
+                    <h2 class="text-xl lg:text-2xl text-gray-600 mb-6 font-light">
+                        Desenvolvedor Full-Stack & Estudante de Engenharia da Computação
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                        Transformo ideias em experiências digitais incríveis. Especialista em criar soluções web modernas, intuitivas e que realmente fazem a diferença.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#contact" class="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
+                            <span class="flex items-center justify-center">
+                                Vamos conversar
+                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </span>
+                        </a>
+                        <a href="#projects" class="group border-2 border-gray-300 hover:border-blue-500 text-gray-700 hover:text-blue-600 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:shadow-lg">
+                            <span class="flex items-center justify-center">
+                                Ver meu trabalho
+                                <i class="fas fa-external-link-alt ml-2 group-hover:scale-110 transition-transform"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full blur-lg opacity-30 animate-pulse"></div>
+                        <div class="absolute -inset-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-xl opacity-20 animate-pulse" style="animation-delay: 1s;"></div>
+                        
+                        <div class="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                            <img src="https://res.cloudinary.com/dhlzexsce/image/upload/v1752548048/KAIAN_SANTOS_MOURA_2_dp1bc9.jpg" alt="Kaian Santos Moura" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <div class="absolute -top-4 -left-4 bg-white p-4 rounded-2xl shadow-xl animate-float">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                                <span class="text-sm font-medium text-gray-700">Disponível para projetos</span>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute -bottom-6 -right-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 rounded-2xl shadow-xl animate-float" style="animation-delay: 1s;">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold">6+</div>
+                                <div class="text-sm opacity-90">Anos de experiência</div>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute top-1/2 -left-8 bg-white p-4 rounded-2xl shadow-xl animate-float" style="animation-delay: 2s;">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-code text-blue-600 text-xl"></i>
+                                <span class="text-sm font-medium text-gray-700">Full-Stack</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Sobre <span class="gradient-text">Mim</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="w-64 h-64 rounded-lg overflow-hidden shadow-lg">
+                        <img src="https://www.inteli.edu.br/wp-content/uploads/2024/07/oem-campus-2.png" alt="Foto do Inteli" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-semibold mb-4">Kaian Santos Moura</h3>
+                    <p class="text-gray-600 mb-6">
+                        Tenho 21 anos e sou estudante de Engenharia da Computação no Inteli. Minha jornada na tecnologia começou cedo, aos 15 anos, quando descobri minha paixão por desenvolvimento web. Desde então, venho aprimorando minhas habilidades tanto na parte técnica quanto na criativa.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        Com experiência como técnico em informática, adquiri um conhecimento prático valioso sobre hardware e software, o que me permite entender profundamente as necessidades dos usuários finais e criar soluções mais eficientes.
+                    </p>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-xl font-semibold mb-6">O que eu faço</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fas fa-laptop-code text-blue-600 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-gray-900 mb-1">Desenvolvimento Web</h5>
+                                    <p class="text-gray-600 text-sm">Criação de sites e aplicações web modernas, responsivas e otimizadas</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fas fa-paint-brush text-purple-600 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-gray-900 mb-1">UI/UX Design</h5>
+                                    <p class="text-gray-600 text-sm">Design de interfaces intuitivas focadas na experiência do usuário</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fas fa-shopping-cart text-green-600 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-gray-900 mb-1">E-commerce</h5>
+                                    <p class="text-gray-600 text-sm">Desenvolvimento de lojas virtuais completas e integradas</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fas fa-tools text-red-600 text-sm"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium text-gray-900 mb-1">Manutenção de TI</h5>
+                                    <p class="text-gray-600 text-sm">Suporte técnico especializado em hardware e software</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Meus <span class="gradient-text">Serviços</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Ofereço soluções completas para sua presença digital, desde sites institucionais até complexas lojas virtuais.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="modern-card hover-lift p-8 rounded-xl shadow-md">
+                    <div class="w-14 h-14 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center mb-6 hover-glow">
+                        <i class="fas fa-laptop-code text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Desenvolvimento Web</h3>
+                    <p class="text-gray-600">Criação de sites profissionais, responsivos e otimizados para SEO, garantindo a melhor experiência para seus usuários.</p>
+                </div>
+                
+                <div class="modern-card hover-lift p-8 rounded-xl shadow-md">
+                    <div class="w-14 h-14 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg flex items-center justify-center mb-6 hover-glow">
+                        <i class="fas fa-shopping-cart text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">E-commerce</h3>
+                    <p class="text-gray-600">Lojas virtuais completas com sistemas de pagamento, gestão de estoque e integração com marketplaces.</p>
+                </div>
+                
+                <div class="modern-card hover-lift p-8 rounded-xl shadow-md">
+                    <div class="w-14 h-14 bg-gradient-to-br from-green-400 to-green-600 rounded-lg flex items-center justify-center mb-6 hover-glow">
+                        <i class="fas fa-mobile-alt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">UI/UX Design</h3>
+                    <p class="text-gray-600">Design de interfaces intuitivas e agradáveis, focadas na experiência do usuário e nas melhores práticas de usabilidade.</p>
+                </div>
+                
+                <div class="modern-card hover-lift p-8 rounded-xl shadow-md">
+                    <div class="w-14 h-14 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center mb-6 hover-glow">
+                        <i class="fas fa-search text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Otimização SEO</h3>
+                    <p class="text-gray-600">Melhoria do posicionamento nos mecanismos de busca através de técnicas avançadas de SEO on-page e off-page.</p>
+                </div>
+                
+                <div class="modern-card hover-lift p-8 rounded-xl shadow-md">
+                    <div class="w-14 h-14 bg-gradient-to-br from-red-400 to-red-600 rounded-lg flex items-center justify-center mb-6 hover-glow">
+                        <i class="fas fa-tools text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Manutenção de TI</h3>
+                    <p class="text-gray-600">Serviços técnicos especializados em hardware e software para empresas e usuários domésticos.</p>
+                </div>
+                
+                <div class="modern-card hover-lift p-8 rounded-xl shadow-md">
+                    <div class="w-14 h-14 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-lg flex items-center justify-center mb-6 hover-glow">
+                        <i class="fas fa-server text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Hospedagem & Domínio</h3>
+                    <p class="text-gray-600">Configuração e gerenciamento de hospedagem de sites, registro de domínios e serviços de e-mail profissional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Meus <span class="gradient-text">Projetos</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Alguns dos trabalhos que desenvolvi ao longo da minha carreira como desenvolvedor.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="modern-card hover-lift rounded-xl overflow-hidden shadow-md">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Projeto 1" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">Site Institucional</h3>
+                            <span class="text-sm bg-gradient-to-r from-blue-500 to-blue-600 text-white px-3 py-1 rounded-full">Web</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Site desenvolvido para uma clínica médica com agendamento online e área do paciente.</p>
+                        <div class="flex space-x-2">
+                            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">HTML</span>
+                            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">CSS</span>
+                            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modern-card hover-lift rounded-xl overflow-hidden shadow-md">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80" alt="Projeto 2" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">Loja Virtual</h3>
+                            <span class="text-sm bg-gradient-to-r from-purple-500 to-purple-600 text-white px-3 py-1 rounded-full">E-commerce</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">E-commerce completo para uma marca de roupas com integração a marketplaces e ERP.</p>
+                        <div class="flex space-x-2">
+                            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">WordPress</span>
+                            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">WooCommerce</span>
+                            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">PHP</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modern-card hover-lift rounded-xl overflow-hidden shadow-md">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80" alt="Projeto 3" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-xl font-semibold">Dashboard Analytics</h3>
+                            <span class="text-sm bg-gradient-to-r from-green-500 to-green-600 text-white px-3 py-1 rounded-full">Web App</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Plataforma de análise de dados com gráficos interativos e exportação de relatórios.</p>
+                        <div class="flex space-x-2">
+                            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">React</span>
+                            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">Node.js</span>
+                            <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded-full">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-blue-600 text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition duration-300">
+                    Ver todos os projetos <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Depoimentos de <span class="gradient-text">Clientes</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Cliente 1" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Ana Carolina</h4>
+                            <p class="text-gray-600 text-sm">Dentista</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"O Kaian transformou completamente minha clínica com um site moderno e funcional. O agendamento online facilitou muito a vida dos meus pacientes e aumentou em 40% minhas consultas."</p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Cliente 2" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Ricardo Almeida</h4>
+                            <p class="text-gray-600 text-sm">Empresário</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Contratei o Kaian para desenvolver nossa loja virtual e fiquei impressionado com o profissionalismo. Ele não só entregou antes do prazo como ainda nos deu treinamento para gerenciar o site."</p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente 3" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Juliana Mendes</h4>
+                            <p class="text-gray-600 text-sm">Designer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"Trabalhei com o Kaian em um projeto de redesign de site e adorei a colaboração. Ele tem uma visão técnica incrível que complementou perfeitamente meu trabalho de design."</p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Entre em <span class="gradient-text">Contato</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">Tem um projeto em mente ou quer saber mais sobre meus serviços? Mande uma mensagem!</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-12">
+                    <form id="whatsapp-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
+                                <input type="text" id="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-300" placeholder="Seu nome">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E-mail(Opcional)</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-300" placeholder="seu@email.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Assunto</label>
+                            <input type="text" id="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-300" placeholder="Sobre o que você quer falar?">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Mensagem</label>
+                            <textarea id="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-300" placeholder="Descreva seu projeto ou dúvida..."></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300 flex items-center justify-center">
+                                <i class="fab fa-whatsapp mr-2 text-xl"></i>
+                                Enviar via WhatsApp
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2 lg:pl-12">
+                    <div class="bg-gray-50 p-8 rounded-xl">
+                        <h3 class="text-xl font-semibold mb-6">Informações de Contato</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium mb-1">Localização</h4>
+                                    <p class="text-gray-600">São Paulo, Brasil</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-purple-100 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-envelope text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium mb-1">E-mail</h4>
+                                    <p class="text-gray-600">contato@kaian.me</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-green-100 p-3 rounded-lg mr-4">
+                                    <i class="fab fa-whatsapp text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium mb-1">WhatsApp</h4>
+                                    <p class="text-gray-600">+55 (13) 98145-0865</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-yellow-100 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-clock text-yellow-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium mb-1">Horário Comercial</h4>
+                                    <p class="text-gray-600">Segunda - Sexta: 9h - 18h</p>
+                                    <p class="text-gray-600">Sábado: 10h - 14h</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-medium mb-4">Redes Sociais</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://www.linkedin.com/in/kaian-moura-56b8871b4/" class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition duration-300">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://www.instagram.com/kaian_moura/" class="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center text-pink-600 hover:bg-pink-600 hover:text-white transition duration-300">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://github.com/Kaian-Moura" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-gray-700 transition duration-300">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <a href="#" class="text-xl font-bold gradient-text">kaian.me</a>
+                    <p class="mt-4 text-gray-400">Desenvolvimento web profissional e soluções digitais personalizadas para seu negócio.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Início</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">Sobre</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition duration-300">Serviços</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-white transition duration-300">Projetos</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Serviços</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Desenvolvimento Web</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">E-commerce</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">UI/UX Design</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Manutenção de TI</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2023 Kaian Santos Moura. Todos os direitos reservados.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Termos de Serviço</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-300">Política de Privacidade</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5513981450865?text=Olá! Gostaria de saber mais sobre seus serviços." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.scroll-reveal');
+            
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('revealed');
+                }
+            });
+        }
+
+        function parallaxEffect() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax');
+            
+            parallaxElements.forEach(element => {
+                const speed = element.dataset.speed || 0.5;
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        }
+
+        function updateNavbar() {
+            const navbar = document.querySelector('nav');
+            const scrolled = window.pageYOffset;
+            
+            if (scrolled > 50) {
+                navbar.classList.add('bg-white/95', 'backdrop-blur-md');
+                navbar.classList.remove('bg-white');
+            } else {
+                navbar.classList.add('bg-white');
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-md');
+            }
+        }
+
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        window.addEventListener('load', function() {
+            const elementsToReveal = [
+                '.modern-card',
+                '.hover-lift',
+                'section h2',
+                'section p'
+            ];
+            
+            elementsToReveal.forEach(selector => {
+                document.querySelectorAll(selector).forEach(element => {
+                    element.classList.add('scroll-reveal');
+                });
+            });
+            
+            revealOnScroll();
+        });
+
+        window.addEventListener('scroll', function() {
+            revealOnScroll();
+            parallaxEffect();
+            updateNavbar();
+        });
+
+        document.getElementById('whatsapp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            const whatsappMessage = `Olá! Meu nome é ${name}.
+
+📧 E-mail: ${email}
+📋 Assunto: ${subject}
+
+💬 Mensagem:
+${message}
+
+Gostaria de conversar sobre este projeto. Obrigado!`;
+
+            const whatsappURL = `https://wa.me/5513981450865?text=${encodeURIComponent(whatsappMessage)}`;
+            
+            window.open(whatsappURL, '_blank');
+            
+            this.reset();
+            
+            showNotification('Redirecionando para o WhatsApp...', 'success');
+        });
+
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 ${
+                type === 'success' ? 'bg-green-500 text-white' : 
+                type === 'error' ? 'bg-red-500 text-white' : 
+                'bg-blue-500 text-white'
+            }`;
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-${type === 'success' ? 'check' : type === 'error' ? 'times' : 'info'} mr-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 4000);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.modern-card, .hover-lift');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.scroll-reveal').forEach(el => {
+                observer.observe(el);
+            });
+        }
+    </script>
 </body>
 </html>
+
